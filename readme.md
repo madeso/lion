@@ -2,7 +2,7 @@
 
 ```lisp
 (lion
-    description="LION is inspired by xml but with a S-expression syntax"
+    description:"LION is inspired by xml but with a S-expression syntax"
     (with-xkcd-reference 927)
     (made-with-love true)
 )
@@ -68,7 +68,7 @@ Objects are seperated into 3 section:
 This identified the name of the object, and it is a single symbol.
 
 #### The named values
-Zero or more `symbol = value`.  For example:
+Zero or more `symbol : value`.  For example:
 * `name: foo`
 * `bar: 42`
 
