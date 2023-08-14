@@ -85,8 +85,46 @@ Zero or more values.
 ### Nil/null
 Nil or null is represented by either `( )` `[ ]` or `{ }`. It can be consiederd as a empty object without a name symbol.
 
+## Compared to
 
+### XML
+XML `<foo bar="baz"/>` vs LION `(foo bar: "baz")` is similar but when adding a element it has to be split into a sub-element, XAML has solved this with custom syntax inside the attribute or sub elements with dot notation to differ it from the rest of the sub elements.
+
+XML
+```xml
+<foo>
+    <foo.bar>
+        <baz/>
+    </foo.bar>
+</foo>
+```
+vs LION `(foo bar: (baz))`
+
+### JSON
+JSON
+```json
+{
+    "type": "foobar",
+    "foo": "bar",
+    "body": [
+        {"type": baz}
+    ]
+}
+```
+vs
+LION
+```lisp
+(foobar
+    foo: "bar"
+    (baz)
+)
+```
+
+In reality, you probably want to escape the special `type` and `body` in json to not conflict with properties but are ommited here. `$type`, for example, is sometimes used to avoid conflict elsewhere.
+
+   
+
+ 
 ## todo
 * Add better description and railroad diagrams to syntax section
-* Add samples comparing with xml and json.
 
