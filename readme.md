@@ -30,7 +30,7 @@ class Bool : Value {}
 class Int : Value {}
 class Float : Value {}
 
-class Node : Value {
+class Object : Value {
     string Name;
     Dictionary<string, Value> NamedValues;
     List<Value> IndexValues;
@@ -56,16 +56,16 @@ Bools are either `true` or `false`.
 ### Integer
 ### Floats
 
-### Nodes
-Nodes are surrounded by begin and end characters. They are either `( )` `[ ]` or `{ }`. They are considered equal but a begin must be matched by the corresponding end. 
+### Objects
+Objects are surrounded by begin and end characters. They are either `( )` `[ ]` or `{ }`. They are considered equal but a begin must be matched by the corresponding end. 
 
-Nodes are seperated into 3 section:
+Objects are seperated into 3 section:
 1. The name section.
 2. The named values (or properties) section.
 3. The indexed values (or list) section.
 
 #### The name
-This identified the anem of the node, and it is a single symbol.
+This identified the name of the object, and it is a single symbol.
 
 #### The named values
 Zero or more `symbol = value`.
@@ -75,7 +75,7 @@ Zero or more values.
 
 
 ### Nil/null
-Nil or null is represented by either `( )` `[ ]` or `{ }`. It can be consiederd as a empty node without a name symbol.
+Nil or null is represented by either `( )` `[ ]` or `{ }`. It can be consiederd as a empty object without a name symbol.
 
 
 ## todo
