@@ -100,7 +100,7 @@ XAML has solved this with custom syntax inside the attribute or sub elements wit
 </TextBox>
 ```
 
-So our xml example would be:
+Adding a custom format seems like a lot of hassle, so with dot notation our example xml example would go from `<foo bar="baz"/>` to:
 XML
 ```xml
 <foo>
@@ -110,11 +110,18 @@ XML
 </foo>
 ```
 
-For completion, the textbox xaml would be written in LION like (using begin/end that match xml):
+For completion, the textbox from the xaml example would be written in LION like (using begin/end characters that match xml and custom syntax):
 ```
 <TextBox
     Text: <Binding Source: {StaticResource myDataSource}>
 >
+```
+
+or regular `()` and lower case symbols:
+```lisp
+(text-box
+    text: (binding source: (static-resource my-data-source))
+)
 ```
 
 ### JSON
