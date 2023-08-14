@@ -3,8 +3,8 @@
 ```lisp
 (lion
     description:"LION is inspired by xml but with a S-expression syntax"
-    (with-xkcd-reference 927)
-    (made-with-love true)
+    (add-xkcd-reference 927)
+    (add-love)
 )
 ```
 
