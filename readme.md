@@ -2,13 +2,13 @@
 
 ```lisp
 (lion
-    description="Lion is inspired by xml but with a S-expression syntax"
+    description="LION is inspired by xml but with a S-expression syntax"
     (with-xkcd-reference 927)
     (made-with-love true)
 )
 ```
 
-This repo contains the specification and reference implementations for the lion format.
+This repo contains the specification and reference implementations for the LION format.
 
 ![xkcd comic about standards, please see explainxkcd link below](xkcd.png)
 
@@ -68,7 +68,15 @@ Objects are seperated into 3 section:
 This identified the name of the object, and it is a single symbol.
 
 #### The named values
-Zero or more `symbol = value`.
+Zero or more `symbol = value`.  For example:
+* `name: foo`
+* `bar: 42`
+
+In regular S-Expressions theese would be represented as regular objects like:
+* `(name foo)`
+* `(bar 42)`
+
+but much like attributes and sub-elements are different so are named and indexed values different in LION.
 
 #### The indexed values
 Zero or more values.
