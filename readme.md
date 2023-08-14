@@ -107,7 +107,7 @@ JSON
     "type": "foobar",
     "foo": "bar",
     "body": [
-        {"type": baz}
+        {"type": "baz"}
     ]
 }
 ```
