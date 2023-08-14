@@ -83,13 +83,24 @@ Zero or more values.
 
 
 ### Nil/null
-Nil or null is represented by either `( )` `[ ]` or `{ }`. It can be consiederd as a empty object without a name symbol.
+Nil or null is represented by either `( )`, `[ ]`, `{ }` or `< >`. It can be consiederd as a empty object without a name symbol.
 
 ## Compared to
 
 ### XML
-XML `<foo bar="baz"/>` vs LION `(foo bar: "baz")` is similar but when adding a element it has to be split into a sub-element, XAML has solved this with custom syntax inside the attribute or sub elements with dot notation to differ it from the rest of the sub elements.
+LION `(foo bar: "baz")` vs XML `<foo bar="baz"/>` are similar, but differences and the short LION syntax is more visible when we want to set a element/object instead of a string for `bar`.
+With LION this is easy: `(foo bar: (baz))` but XML can't.
 
+XAML has solved this with custom syntax inside the attribute or sub elements with dot notation to differ it from the rest of the sub elements. Like the following (reduced) from [msdn](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.binding.source?view=windowsdesktop-7.0) where we set the text property (dot syntax) to a source binding that comes from a resource(custom format).
+```xaml
+<TextBox>
+    <TextBox.Text>
+        <Binding Source="{StaticResource myDataSource}"/>
+    </TextBox.Text>
+</TextBox>
+```
+
+So our xml example would be:
 XML
 ```xml
 <foo>
@@ -98,21 +109,16 @@ XML
     </foo.bar>
 </foo>
 ```
-vs LION `(foo bar: (baz))`
+
+For completion, the textbox xaml would be written in LION like (using begin/end that match xml):
+```
+<TextBox
+    Text: <Binding Source: {StaticResource myDataSource}>
+>
+```
 
 ### JSON
-JSON
-```json
-{
-    "type": "foobar",
-    "foo": "bar",
-    "body": [
-        {"type": "baz"}
-    ]
-}
-```
-vs
-LION
+The following LION object:
 ```lisp
 (foobar
     foo: "bar"
@@ -120,9 +126,28 @@ LION
 )
 ```
 
-In reality, you probably want to escape the special `type` and `body` in json to not conflict with properties but are ommited here. `$type`, for example, is sometimes used to avoid conflict elsewhere.
+Is represented in xml as the following:
+```xml
+<foobar
+    foo="bar">
+    <baz />
+</foobar>
+```
 
-   
+A bit wordy but not by alot. JSON on the other is written as:
+```json
+{
+    "$type": "foobar",
+    "foo": "bar",
+    "$body": [
+        {"$type": "baz"}
+    ]
+}
+```
+
+Since all objects are anonymous, we need to specify a type. Just like we do in LION we follow the name with the named properties and then the indexed properties. Json can't handle indexes inside a object so we need to place those in  a body object. Since our named values might collide with type and body we must make it unique and prefix it with a `$` is [done elsewhere](https://www.newtonsoft.com/json/help/html/serializetypenamehandling.htm) and we just assume there are less users naming their properties `$type` than `type`.
+Also take note that in both LION and xml both values are indented, but in json, the of the 3 rows that are indented one step 1/3 entries are actual values, and at 2 indentations we have the rest of the values.
+
 
  
 ## todo
