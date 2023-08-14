@@ -2,7 +2,7 @@
 
 ```lisp
 (lion
-    description="Lion is inspired by xml but with a S-expression syntax and types inspired(aka copied) by TOML"
+    description="Lion is inspired by xml but with a S-expression syntax"
     (with-xkcd-reference 927)
     (made-with-love true)
 )
