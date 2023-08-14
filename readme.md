@@ -145,7 +145,10 @@ A bit wordy but not by alot. JSON on the other is written as:
 }
 ```
 
-Since all objects are anonymous, we need to specify a type. Just like we do in LION we follow the name with the named properties and then the indexed properties. Json can't handle indexes inside a object so we need to place those in  a body object. Since our named values might collide with type and body we must make it unique and prefix it with a `$` is [done elsewhere](https://www.newtonsoft.com/json/help/html/serializetypenamehandling.htm) and we just assume there are less users naming their properties `$type` than `type`.
+Since all objects are anonymous, we need to specify a type. Then, just like we do in LION, we follow the name with the named properties and then the indexed properties.
+
+Json can't handle indexes inside a object so we need to place those in  a body object. Since our named values might collide with type and body we must make it unique and prefix it with a `$` is [done elsewhere](https://www.newtonsoft.com/json/help/html/serializetypenamehandling.htm) and we just assume there are less users naming their properties `$type` than `type`.
+
 Also take note that in both LION and xml both values are indented, but in json, the of the 3 rows that are indented one step 1/3 entries are actual values, and at 2 indentations we have the rest of the values.
 
 
